@@ -70,6 +70,7 @@
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
     </properties>
 
+
     <dependencies>
         <!-- SpringBoot's @ConfigurationProperties -->
         <dependency>
@@ -299,6 +300,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
             <!-- Add the generated classes to the classpath -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

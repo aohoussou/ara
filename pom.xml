@@ -21,12 +21,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <!-- KEEP IN SYNC WITH ara-generated-cucumber-report for it to have the same versions -->
-        <version>2.0.6.RELEASE</version>
-        <!-- lookup parent from repository -->
-        <relativePath/>
+        <groupId>com.decathlon</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0</version>
     </parent>
 
     <groupId>com.decathlon.ara</groupId>
@@ -44,5 +41,18 @@
         <module>server</module>
         <module>final</module>
     </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.6.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
