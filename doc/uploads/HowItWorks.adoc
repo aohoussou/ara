@@ -1,0 +1,51 @@
+# How ARA works
+
+To understand how to upload reports on ARA, it's highly recommanded to read this part and learn how ARA works
+internally.
+
+## The Data model of ARA
+
+ARA use a very basic data model internally :
+
+### The Cycle
+
+The Cycle represents a scheduled test execution on a given *Branch* (a VCS branch like a Git branch for example),
+for a given *project*
+
+For example, in the image bellow, the cycle `Day` represents all the executions on Develop for the Demo project
+(here in red) :
+
+image::images/cycle.png[A Cycle in ARA]
+
+A Cycle can be linked to several Executions.
+
+### The Execution
+
+The Execution represents the grouping of tests for different *test types* and *countries*.
+
+For example, an execution may contains the reports of all the Cucumber and Postman tests for a french
+environment on build X of the project.
+In the image bellow, the red part is the execution :
+
+image::images/execution.png[An Execution in ARA]
+
+An Execution may be composed of several Runs.
+
+### The Run
+
+The Run represents the execution of *one Test type* for *one given country* in an execution.
+
+In the example bellow, we have two runs : `FR: Integ. APIs` and `FR: HMI Desktop` :
+
+image::images/run.png[A Run in ARA]
+
+A Run may be composed of several Executed Scenario.
+
+### The Executed Scenario
+
+The Executed Scenario represent the execution of *One test Scenario* (either a Postman collection or a Cucumber
+scenario for example).
+
+In the image bellow, for one run, we have one Executed Scenario passing and one Executed Scenario failing :
+
+image::images/executed_scenario.png[Some executed scenario in ARA]
