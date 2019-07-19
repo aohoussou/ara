@@ -123,3 +123,47 @@ return `WARNING`. If it's bellow the `failure` one, it will return `FAILED`.
 
 
 ### The buildDefinition.json
+
+Once your analyze is configured using the `cycleDefinition.json` file, you need to pass additional information
+to your reports to link your ARA results with your CI build. This is done with the help of the
+`buildInformation.json` files (yes, there is more than one, but don't worry it will not change so much).
+
+This kind of file describes information about the job that ran either the execution, a deployment or a run
+or a test-type.
+
+We recommand that those files should be generated using your CI pipeline and not manually for production
+environments.
+
+Here is an example of a `buildInformation.json` file :
+```
+{
+  "url": "https://build.company.com/demo/master/day/42/",
+  "result": "SUCCESS",
+  "timestamp": 1542018261233,
+  "release": "v2",
+  "version": "724b1de228b72047d865d96f3c518164575caa37",
+   "versionTimestamp": 1542018261233
+}
+```
+
+The `url` field of this file should give a link to the build in your CI which correspond to the folder this
+file is located. For example if you have a dedicated job for your FR country, it should points on it only in
+the `buildInformation.json` of the FR folder. Then if you have on the same Execution, another job for your
+EN country, it should points on it in the `buildInformation.json` of the EN folder.
+
+The `result` field should reflect the state of your CI job for this build, if it's in `SUCCESS` or `FAILURE`
+(note that ARA can analyze results of NRT reports even on failed CI job, you can configure it in this way if
+you want).
+
+The `timestamp` is a UNIX timestamp since Epoch which represents the date & time when this current build job
+has started.
+
+The `release` field contains the current tested release version of your application.
+
+The  `version` field contains the current tested build version of your application.
+
+The `versionTimestamp` is a UNIX timestamp since Epoch which represents the date & time when this current
+version was tagged.
+
+Note that the `release`, `version` and `versionTimestamp` fields are optional in the `buildInformation.json`
+of a Run.
