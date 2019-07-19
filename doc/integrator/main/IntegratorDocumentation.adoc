@@ -82,14 +82,6 @@ You can run several of these (they are called runs), and ship all of these group
 You need to upload these files with some meta-data files and folders in order to add semantics to the report files. +
 The whole set of folders and files is zipped, sent to ARA, and you are done.
 
-=== Key Concepts
-
-First, you need to know some additional key concepts (that were not configured when creating a project in ARA):
-
-* A *cycle* represents a test of a branch by one or more test types
-* An *execution* is the grouping of tests on several countries and/or different test types: they form one coherent test execution that can serve as making a build eligible or not
-* A *run* represents the single unit of one test-type being executed for one country on one execution
-
 === [[tree]] Create a ZIP File
 
 Here is the overall structure of a ZIP for an execution, with a concrete example:
